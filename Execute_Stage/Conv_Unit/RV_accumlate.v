@@ -2,7 +2,7 @@
 
 
 
-module VX_accumlate#(
+module RV_accumlate#(
 
     parameter DATAW = 8,
     parameter N     = 4
