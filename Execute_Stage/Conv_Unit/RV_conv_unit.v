@@ -1,9 +1,9 @@
 `timescale 1ns / 1ps
 
-`include "VX_define.vh"
+`include "RV_define.vh"
 
 
-module VX_conv_unit#(
+module RV_conv_unit#(
 
     parameter CORE_ID = 0
 
@@ -66,7 +66,7 @@ module VX_conv_unit#(
         for(i = 0 ; i < `NUM_THREADS ; i = i + 1)
         begin
         
-            VX_multiplier#(
+            RV_multiplier#(
             
                 .WIDTHA(32),
                 .WIDTHB(32),
@@ -90,7 +90,7 @@ module VX_conv_unit#(
     
     wire adder_en , adder_active;
     
-    VX_pipe_register#(
+    RV_pipe_register#(
         
         .DATAW(1 + (`NUM_THREADS * 32))
     
@@ -104,7 +104,7 @@ module VX_conv_unit#(
     
     );
     
-    VX_adder_tree#(
+    RV_adder_tree#(
     
         .N(`NUM_THREADS),
         .DATAW(32)
@@ -123,7 +123,7 @@ module VX_conv_unit#(
     wire [31 : 0] accumIn , accumOut;
     wire accum_en;
     
-    VX_pipe_register#(
+    RV_pipe_register#(
         
         .DATAW(1 + 32)
     
@@ -137,7 +137,7 @@ module VX_conv_unit#(
     
     );
     
-    VX_accumlate#(
+    RV_accumlate#(
     
         .DATAW(32),
         .N(`NUM_THREADS) 
@@ -153,7 +153,7 @@ module VX_conv_unit#(
         
     );
     
-    VX_pipe_register #(
+    RV_pipe_register #(
 
         .DATAW  (1 + `UUID_BITS + `NW_BITS + `NUM_THREADS + 32 + `NR_BITS + 1),
         .RESETW (1),
