@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 
-module VX_stream_arbiter#(
+module RV_stream_arbiter#(
 
     parameter NUM_REQS    = 4,
     parameter LANES       = 1,
@@ -105,7 +105,7 @@ module VX_stream_arbiter#(
             if (TYPE == "R") 
             begin
             
-                VX_rr_arbiter #(
+                RV_rr_arbiter #(
                 
                     .NUM_REQS    (NUM_REQS),
                     .LOCK_ENABLE (LOCK_ENABLE)
@@ -124,7 +124,7 @@ module VX_stream_arbiter#(
             else if(TYPE == "P")
             begin
             
-                VX_fixed_arbiter #(
+                RV_fixed_arbiter #(
                 
                     .NUM_REQS    (NUM_REQS),
                     .LOCK_ENABLE (LOCK_ENABLE)
@@ -187,7 +187,7 @@ module VX_stream_arbiter#(
             for ( i = 0; i < LANES; i = i + 1) 
             begin
             
-                VX_skid_buffer #(
+                RV_skid_buffer #(
                 
                     .DATAW    (DATAW),
                     .PASSTHRU (0 == BUFFERED),
