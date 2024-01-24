@@ -2,7 +2,7 @@
 
 
 
-module VX_adder_tree#(
+module V_adder_tree#(
 
     parameter N     = 4,
     parameter DATAW = 8
