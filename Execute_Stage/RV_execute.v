@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
 
-`include "VX_define.vh"
-`include "VX_cache_define.vh"
+`include "RV_define.vh"
+`include "RV_cache_define.vh"
 
 
-module VX_execute#(
+module RV_execute#(
 
     parameter CORE_ID   = 0,
     parameter NUM_REQS  = `NUM_THREADS,
@@ -227,7 +227,7 @@ module VX_execute#(
     wire [`INST_FRM_BITS-1 : 0]     fpu_to_csr_if_read_frm;
     
     
-    VX_alu_unit #(
+    RV_alu_unit #(
     
         .CORE_ID(CORE_ID)
         
@@ -274,7 +274,7 @@ module VX_execute#(
     
     
 
-    VX_lsu_unit #(
+    RV_lsu_unit #(
 
         .NUM_REQS(NUM_REQS),
         .TAG_WIDTH(TAG_WIDTH),
@@ -341,7 +341,7 @@ module VX_execute#(
     );
 
      
-    VX_csr_unit #(
+    RV_csr_unit #(
     
         .CORE_ID(CORE_ID)
         
@@ -401,7 +401,7 @@ module VX_execute#(
     );
     
     
-    VX_fpu_unit #(
+    RV_fpu_unit #(
     
         .CORE_ID(CORE_ID)
         
@@ -451,7 +451,7 @@ module VX_execute#(
     );
     
     
-    VX_gpu_unit #(
+    RV_gpu_unit #(
 
         .CORE_ID(CORE_ID)
         
